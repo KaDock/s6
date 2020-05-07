@@ -2,7 +2,6 @@ FROM alpine:latest AS s6-alpine
 LABEL maintainer="Kalle M. Aagaard docker@k-moeller.dk"
 
 ARG S6_OVERLAY_RELEASE=https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz
-ENV S6_OVERLAY_RELEASE=${S6_OVERLAY_RELEASE}
 
 # Build and some of image configuration
 RUN true \
