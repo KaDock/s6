@@ -1,19 +1,16 @@
-REPO := kalledk
+REPO := KaDock
 NAME := s6
 TAG := latest
 
 IMAGE := $(REPO)/$(NAME):$(TAG)
 
 
-ABS_PATH := $(dir $(abspath $(MAKEFILE_LIST)))
-
-
-.PHONY: build run
+.PHONY: build run all shell
 
 all: build
 
 build:
-	docker build -t $(IMAGE) $(ABS_PATH)/Docker
+	docker build -t $(IMAGE) ./Docker
 
 run: build
 	docker run --rm -i -t $(IMAGE)
