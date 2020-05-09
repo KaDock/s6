@@ -1,4 +1,5 @@
-FROM alpine:latest AS s6-alpine
+FROM alpine:latest
+
 LABEL maintainer="Kalle M. Aagaard docker@k-moeller.dk"
 
 ARG S6_OVERLAY_RELEASE=https://github.com/just-containers/s6-overlay/releases/latest/download/s6-overlay-amd64.tar.gz
