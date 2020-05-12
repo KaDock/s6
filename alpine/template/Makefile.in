@@ -1,0 +1,4 @@
+IMAGE := @IMAGE@
+
+build:
+	docker build -t ${IMAGE} .
