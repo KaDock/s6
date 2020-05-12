@@ -1,19 +1,15 @@
-REPO := KaDock
-NAME := s6
-TAG := latest
+FLAVOURS=latest edge
+DIRS=$(patsubst %,alpine/%,${FLAVOURS})
+DOCKERFILES=$(patsubst %,alpine/%/Dockerfile, ${FLAVOURS})
+MAKEFILES=$(patsubst %,alpine/%/Makefile, ${FLAVOURS})
 
-IMAGE := $(REPO)/$(NAME):$(TAG)
+.PHONY: all clean
 
+all: ${DOCKERFILES} ${MAKEFILES}
 
-.PHONY: build run all shell
+clean:
+	rm -rf ${DIRS}
 
-all: build
-
-build:
-	docker build -t $(IMAGE) ./Docker
-
-run: build
-	docker run --rm -i -t $(IMAGE)
-
-shell: build
-	docker run --rm -i -t ${IMAGE} /bin/sh
+alpine/%/Dockerfile alpine/%/Makefile: alpine/template/Dockerfile.in alpine/template/Makefile.in
+	mkdir -p "$(@D)"
+	cd "$(@D)" && ../../configure --srcdir=../template TAG=$(*F) NAME=alpine
