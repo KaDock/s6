@@ -1,4 +1,4 @@
-FLAVOURS=latest edge
+FLAVOURS=edge
 DIRS=$(patsubst %,alpine/%,${FLAVOURS})
 DOCKERFILES=$(patsubst %,alpine/%/Dockerfile, ${FLAVOURS})
 MAKEFILES=$(patsubst %,alpine/%/Makefile, ${FLAVOURS})
