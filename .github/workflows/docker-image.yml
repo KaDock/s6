@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build ./alpine/edge --file ./alpine/edge/Dockerfile --kadock:$(date +%s)
+      run: docker build ./alpine/edge --file ./alpine/edge/Dockerfile -t kadock:$(date +%s)
